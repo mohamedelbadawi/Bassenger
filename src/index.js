@@ -39,8 +39,9 @@ io.on('connection', (socket) => {
         callback()
     })
 
-    socket.on('disconnect', () => {
-        io.emit('message', 'A user has left!')
+    socket.on('disconnect', (message) => {
+        io.emit('message', { message: 'A user has left!', createdAt: new Date().getTime() })
+
     })
 })
 
